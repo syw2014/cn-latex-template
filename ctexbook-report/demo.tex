@@ -1,0 +1,147 @@
+\documentclass{progartcn}
+\usepackage{graphicx}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{wrapfig}
+\usepackage{enumerate}
+\usepackage{amsmath,mathrsfs,amsfonts}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{colortbl}
+\usepackage{multirow,makecell}
+\usepackage{multicol}
+\usepackage{ulem} % \uline
+\usepackage{listings}
+\usepackage{tikz}
+\usepackage{tcolorbox}
+\usepackage{fontawesome}
+
+
+\title{\bfseries\sffamily
+  算法项目代码管理
+}
+\author{师艳伟}
+%\date{}
+% \affil{Algorithm Team}
+
+
+% 导言区结束
+\begin{document}
+\maketitle      % 制作封面
+
+
+\sloppy % 解决中英文混排文字超出边界问题
+
+
+% 添加目录
+\tableofcontents
+\thispagestyle{empty} % 目录页不显示页码
+
+\mainmatter           % 页码从正文开始
+\renewcommand{\thesection}{\arabic{section}}
+% \setcounter{section}{2}
+
+%　第０章
+\section{版本说明}
+% 表1 版本说明
+\begin{table}[!ht]
+  \centering
+  \begin{tabular}{|c|c|c|c|}
+  \hline
+  文档版本 & 修改说明 & 作者 & 时间	\\
+  \hline
+  v1.0 & 创建文档 & 师艳伟 & 2018.11.20		\\
+  \hline
+  \end{tabular}
+\end{table}
+
+% 2 chapter
+\section{Spark 项目工程模板}
+TO BE ADDED!
+\subsection{目录结构}
+TO BE ADDED!
+\subsection{新建应用}
+TO BE ADDED!
+
+\section{代码提交说明}
+
+TO BE ADDED!
+
+
+\section{boxes}
+
+\noindent\verb|\begin{titledbox}{<title>} <content> \end{titledbox}|
+
+\begin{titledbox}{HTTP/Console 内核}
+  HTTP 内核继承自 \verb|Illuminate\Foundation\Http\Kernel| 类，该类定义了一个 \verb|bootstrappers| 数组，这个数组中的类在请求被执行前运行，这些 \verb|bootstrappers| 配置了错误处理、日志、检测应用环境以及其它在请求被处理前需要执行的任务。
+\end{titledbox}
+
+\noindent\verb|\begin{notebox} <content> \end{notebox}|
+
+\begin{notebox}
+  HTTP 内核继承自 \verb|Illuminate\Foundation\Http\Kernel| 类，该类定义了一个 \verb|bootstrappers| 数组，这个数组中的类在请求被执行前运行，这些 \verb|bootstrappers| 配置了错误处理、日志、检测应用环境以及其它在请求被处理前需要执行的任务。
+\end{notebox}
+
+\noindent\verb|\begin{importantbox} <content> \end{importantbox}|
+
+\begin{importantbox}
+  HTTP 内核继承自 \verb|Illuminate\Foundation\Http\Kernel| 类，该类定义了一个 \verb|bootstrappers| 数组，这个数组中的类在请求被执行前运行，这些 \verb|bootstrappers| 配置了错误处理、日志、检测应用环境以及其它在请求被处理前需要执行的任务。
+\end{importantbox}
+
+\noindent\verb|\begin{shellbox} <content> \end{shellbox}|
+
+\begin{shellbox}
+cd my-app
+ng serve --open
+\end{shellbox}
+
+\noindent\verb|\begin{invertedshellbox} <content> \end{invertedshellbox}|
+
+\begin{invertedshellbox}
+cd my-app
+ng serve --open
+\end{invertedshellbox}
+
+
+\section{服务容器}
+
+Laravel 服务容器是一个用于管理类依赖和执行依赖注入的强大工具。依赖注入听上去很花哨，其实质是通过构造函数或者某些情况下通过 \verb|setter| 方法将类依赖注入到类中。
+
+让我们看一个简单的例子：
+
+\clearpage
+
+\begin{lstlisting}[language=PHP,caption={PHP 代码样例}]
+<?php
+namespace App\Http\Controllers;
+
+use App\User;
+use App\Repositories\UserRepository;
+use App\Http\Controllers\Controller;
+
+class UserController extends Controller
+{
+  /**
+  * The user repository implementation.
+  *
+  * @var UserRepository
+  */
+  protected $users;
+  
+  /**
+  * Create a new controller instance.
+  * 
+  * @param  UserRepository  $users
+  * @return void
+  */
+  public function __construct(UserRepository $users)
+  {
+    $this->users = $users;
+  }
+  
+  ...
+}
+\end{lstlisting}
+
+深入理解 Laravel 服务容器对于构建功能强大的大型 Laravel 应用而言至关重要，对于贡献代码到 Laravel 核心也很有帮助。
+
+\end{document}
